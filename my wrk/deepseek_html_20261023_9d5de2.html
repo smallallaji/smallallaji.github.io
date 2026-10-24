@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comfort & Craft | Furniture</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background-color: #faf7f2;
+      color: #2e241f;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #3e2c23;
+      color: #f5ede4;
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .logo i {
+      color: #e3b87c;
+      margin-right: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: #f5ede4;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: color 0.2s, border-bottom 0.2s;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav ul li a:hover {
+      color: #e3b87c;
+      border-bottom: 2px solid #e3b87c;
+    }
+
+    main {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 5%;
+    }
+
+    section {
+      margin-bottom: 5rem;
+      scroll-margin-top: 100px;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      color: #3e2c23;
+      margin-bottom: 1.8rem;
+      border-left: 8px solid #e3b87c;
+      padding-left: 1.2rem;
+    }
+
+    /* FULL SCREEN HOME / HERO */
+    .home-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      /* Premium modern living room background image */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      margin-bottom: 0;
+      padding-top: 80px;
+    }
+
+    .home-text-overlay {
+      color: #ffffff;
+      max-width: 800px;
+      padding: 2rem;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .home-text-overlay h1 {
+      font-size: 4rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .home-text-overlay p {
+      font-size: 1.5rem;
+      margin-bottom: 2.5rem;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #e3b87c;
+      color: #2e241f;
+      padding: 1rem 2.8rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: background 0.25s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .btn:hover {
+      background-color: #f0d6b3;
+      transform: scale(1.05);
+    }
+
+    /* SERVICES GRID WITH PRICES & IMAGES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+      border: 1px solid #ede3d9;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 40px rgba(0,0,0,0.1);
+    }
+
+    .service-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-bottom: 1px solid #ede3d9;
+    }
+
+    .service-info {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .service-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #2e241f;
+    }
+
+    .service-info p {
+      color: #7a6b5e;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      border-top: 1px solid #f0e6db;
+      padding-top: 1rem;
+    }
+
+    .price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #b58b65;
+    }
+
+    .btn-order {
+      background-color: #3e2c23;
+      color: #f5ede4;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .btn-order:hover {
+      background-color: #5c4436;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 2rem;
+      border-radius: 30px;
+      flex: 1 1 280px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+      border-left: 8px solid #e3b87c;
+    }
+
+    .testimonial i.fa-quote-left {
+      color: #e3b87c;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      color: #4d3f35;
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .testimonial h4 {
+      font-weight: 600;
+      color: #3e2c23;
+    }
+
+    .testimonial span {
+      font-size: 0.9rem;
+      color: #9b8b7c;
+    }
+
+    /* ABOUT US */
+    .about-content {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      align-items: center;
+      background: #fff5eb;
+      padding: 2.5rem;
+      border-radius: 40px;
+    }
+
+    .about-text {
+      flex: 2 1 300px;
+    }
+
+    .about-text p {
+      margin-bottom: 1.2rem;
+      color: #4d3f35;
+      font-size: 1.1rem;
+    }
+
+    .about-highlights {
+      flex: 1 1 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+    }
+
+    .highlight-item i {
+      color: #b58b65;
+      font-size: 1.8rem;
+      width: 2rem;
+      text-align: center;
+    }
+
+    /* ORDER NOW */
+    .order-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+    }
+
+    .order-form {
+      flex: 2 1 350px;
+    }
+
+    .order-info {
+      flex: 1 1 240px;
+      background: #3e2c23;
+      color: #f5ede4;
+      padding: 2rem;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .order-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+      color: #e3b87c;
+    }
+
+    .order-info p {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .order-info i {
+      margin-right: 10px;
+      color: #e3b87c;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #3e2c23;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: 1.5px solid #e3d9cf;
+      border-radius: 40px;
+      font-size: 1rem;
+      background: #fefcf9;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #b58b65;
+      box-shadow: 0 0 0 4px rgba(181, 139, 101, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 110px;
+      resize: vertical;
+      border-radius: 24px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1.1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: #3e2c23;
+      color: #f5ede4;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-submit:hover {
+      background: #5c4436;
+      transform: scale(1.01);
+    }
+
+    .form-message {
+      margin-top: 1.2rem;
+      font-weight: 500;
+      padding: 0.8rem;
+      border-radius: 30px;
+      text-align: center;
+      display: none;
+    }
+
+    .form-message.success {
+      display: block;
+      background: #e6f0e6;
+      color: #2f6b3a;
+    }
+
+    .form-message.error {
+      display: block;
+      background: #ffe6e6;
+      color: #b33a3a;
+    }
+
+    footer {
+      background: #2e241f;
+      color: #cfc1b5;
+      text-align: center;
+      padding: 2rem 5%;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+    }
+
+    footer i {
+      color: #e3b87c;
+      margin: 0 4px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav ul {
+        gap: 1.2rem;
+        justify-content: center;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .home-text-overlay h1 {
+        font-size: 2.5rem;
+      }
+      .home-text-overlay p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <i class="fas fa-couch"></i> Comfort & Craft
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimony">Testimony</a></li>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#order">Order now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- FULL SCREEN HOME SECTION -->
+    <section id="home" class="home-section">
+      <div class="home-text-overlay">
+        <h1>Timeless Furniture for Modern Living</h1>
+        <p>Beds, chairs, TV stands & cupboards — handcrafted with care, built to last.</p>
+        <a href="#order" class="btn">Order Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" style="padding-top: 4rem;">
+      <h2>Our services & prices</h2>
+      <div class="services-grid">
+        
+        <!-- Product 1 -->
+        <div class="service-card">
+          <img class="service-img" src="images/bed1.jpeg" alt="Luxury Velvet Beds">
+          <div class="service-info">
+            <h3>Velvet Bed Frames</h3>
+            <p>Luxurious upholstered beds in blue, grey, and black. Available in all sizes.</p>
+            <div class="price-row">
+              <span class="price">$450</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="service-card">
+          <img class="service-img" src="images/bed2.jpg.jpeg" alt="Black Velvet Bed">
+          <div class="service-info">
+            <h3>Black Velvet Bed</h3>
+            <p>Deep black velvet finish with geometric padded headboard. Queen & King sizes.</p>
+            <div class="price-row">
+              <span class="price">$480</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="service-card">
+          <img class="service-img" src="images/sofa4.jpeg" alt="Grey Sofa Set">
+          <div class="service-info">
+            <h3>Corduroy Sofa Set</h3>
+            <p>Plush grey corduroy 3-seater and single armchair. Extreme comfort.</p>
+            <div class="price-row">
+              <span class="price">$750</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="service-card">
+          <img class="service-img" src="images/bed3.jpg.jpeg" alt="Brown and Grey Beds">
+          <div class="service-info">
+            <h3>Brown & Grey Beds</h3>
+            <p>Elegant chestnut brown and slate grey velvet frames with central diamond stitching.</p>
+            <div class="price-row">
+              <span class="price">$460</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="service-card">
+          <img class="service-img" src="images/bed5.jpeg" alt="Grey Panelled Bed">
+          <div class="service-info">
+            <h3>Grey Panelled Bed</h3>
+            <p>Modern grey upholstered frame with vertical and horizontal headboard panelling.</p>
+            <div class="price-row">
+              <span class="price">$440</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="service-card">
+          <img class="service-img" src="images/sofa9.jpeg" alt="Blue Corner Sofa Set">
+          <div class="service-info">
+            <h3>Blue Fabric Sofa Set</h3>
+            <p>Spacious 3-seater corner sofa with matching armchair. Soft fabric finish.</p>
+            <div class="price-row">
+              <span class="price">$820</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="service-card">
+          <img class="service-img" src="images/sofa10.jpeg" alt="Grey L-Shape Sofa with Orange Pillows">
+          <div class="service-info">
+            <h3>L-Shape Sectional Sofa</h3>
+            <p>Large grey velvet sectional with accent orange pillows. Perfect for family rooms.</p>
+            <div class="price-row">
+              <span class="price">$950</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="service-card">
+          <img class="service-img" src="images/stand11.jpeg" alt="Grey Corduroy Armchair">
+          <div class="service-info">
+            <h3>Luxury Stand</h3>
+            <p>Single seater plush armchair in textured grey corduroy fabric.</p>
+            <div class="price-row">
+              <span class="price">$280</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="service-card">
+          <img class="service-img" src="images/beds8.jpeg" alt="Black and Grey Bed Frames">
+          <div class="service-info">
+            <h3>Black & Grey Combo Beds</h3>
+            <p>Matching pair of black and grey upholstered bed frames.</p>
+            <div class="price-row">
+              <span class="price">$890</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="service-card">
+          <img class="service-img" src="images/bed7.jpeg" alt="Black Tufted beds">
+          <div class="service-info">
+            <h3>Black Tufted beds</h3>
+            <p>Deep black textured sofa with distinctive tufted cushioning.</p>
+            <div class="price-row">
+              <span class="price">$780</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+       <!-- Product 11 -->
+        <div class="service-card">
+          <img class="service-img" src="images/bed6.jpeg" alt="Black Tufted beds">
+          <div class="service-info">
+            <h3>Black Tufted beds</h3>
+            <p>Deep black textured sofa with distinctive tufted cushioning.</p>
+            <div class="price-row">
+              <span class="price">$780</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+ <!-- Product 12 -->
+        <div class="service-card">
+          <img class="service-img" src="images/bed12.jpeg" alt="Black Tufted beds">
+          <div class="service-info">
+            <h3>Black Tufted beds</h3>
+            <p>Deep black textured sofa with distinctive tufted cushioning.</p>
+            <div class="price-row">
+              <span class="price">$780</span>
+              <a href="#order" class="btn-order">Order This</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TESTIMONY SECTION -->
+    <section id="testimony">
+      <h2>What our clients say</h2>
+      <div class="testimonials-container">
+        <div class="testimonial">
+          <i class="fas fa-quote-left"></i>
+          <p>“The custom cupboard we ordered fits perfectly. The craftsmanship is outstanding, and delivery was on time.”</p>
+          <h4>Sarah M.</h4>
+          <span>Homeowner, Chicago</span>
+        </div>
+        <div class="testimonial">
+          <i class="fas fa-quote-left"></i>
+          <p>“We furnished our entire living room with chairs and a TV stand. The quality is even better than the photos.”</p>
+          <h4>James & Lisa K.</h4>
+          <span>Interior designers</span>
+        </div>
+        <div class="testimonial">
+          <i class="fas fa-quote-left"></i>
+          <p>“Comfort & Craft made a beautiful bed for our guest room. Excellent communication and fair pricing.”</p>
+          <h4>Patricia R.</h4>
+          <span>Repeat customer</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about">
+      <h2>About us</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p><strong>Comfort & Craft</strong> is a family-owned furniture workshop founded in 2012. We specialize in beds, chairs, TV stands, and cupboards of all kinds — from rustic to contemporary.</p>
+          <p>Every piece is made from sustainably sourced hardwood and finished with non-toxic, child-safe materials. Our small team of artisans combines traditional joinery with modern design.</p>
+          <p>We believe furniture should be both beautiful and functional. That’s why we offer custom dimensions, fabric choices, and finishes to match your space perfectly.</p>
+        </div>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="fas fa-tree"></i>
+            <span>Sustainable wood</span>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-ruler-combined"></i>
+            <span>Custom sizes</span>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-truck"></i>
+            <span>Free local delivery</span>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-hand-holding-heart"></i>
+            <span>10-year warranty</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDER NOW SECTION -->
+    <section id="order">
+      <h2>Order now</h2>
+      <div class="order-container">
+        <div class="order-form">
+          <form id="furnitureOrderForm">
+            <div class="form-group">
+              <label for="name">Full name</label>
+              <input type="text" id="name" placeholder="e.g. Alex Johnson" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="product">Furniture item</label>
+              <select id="product" required>
+                <option value="">— Select —</option>
+                <option value="Velvet Bed Frames">Velvet Bed Frames ($450)</option>
+                <option value="Black Velvet Bed">Black Velvet Bed ($480)</option>
+                <option value="Corduroy Sofa Set">Corduroy Sofa Set ($750)</option>
+                <option value="Brown & Grey Beds">Brown & Grey Beds ($460)</option>
+                <option value="Grey Panelled Bed">Grey Panelled Bed ($440)</option>
+                <option value="Blue Fabric Sofa Set">Blue Fabric Sofa Set ($820)</option>
+                <option value="L-Shape Sectional Sofa">L-Shape Sectional Sofa ($950)</option>
+                <option value="Corduroy Armchair">Corduroy Armchair ($280)</option>
+                <option value="Black & Grey Combo Beds">Black & Grey Combo Beds ($890)</option>
+                <option value="Black Tufted Sofa">Black Tufted Sofa ($780)</option>
+                <option value="Custom">Custom piece</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="details">Details / specifications</label>
+              <textarea id="details" placeholder="Size, color, quantity, delivery instructions..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Place order request</button>
+            <div id="formMessage" class="form-message"></div>
+          </form>
+        </div>
+        <div class="order-info">
+          <h3>Ready to furnish?</h3>
+          <p><i class="fas fa-phone-alt"></i> Call us: (555) 347-8923</p>
+          <p><i class="fas fa-envelope"></i> hello@comfortandcraft.com</p>
+          <p><i class="fas fa-map-pin"></i> 1420 Oakwood Ave, Suite 5</p>
+          <p style="margin-top: 1.5rem; font-size: 0.95rem; opacity: 0.9;">We respond within 24 hours. No payment required until quote is approved.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><i class="fas fa-couch"></i> Comfort & Craft — beds, chairs, TV stands & cupboards <i class="fas fa-couch"></i></p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2025 | Handcrafted with <i class="fas fa-heart"></i> in the USA</p>
+  </footer>
+
+  <script>
+    (function() {
+      const form = document.getElementById('furnitureOrderForm');
+      const messageDiv = document.getElementById('formMessage');
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const name = document.getElementById('name').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const product = document.getElementById('product').value;
+          const details = document.getElementById('details').value.trim();
+
+          messageDiv.className = 'form-message';
+          messageDiv.style.display = 'none';
+          messageDiv.textContent = '';
+
+          if (!name || !email || !product || !details) {
+            messageDiv.className = 'form-message error';
+            messageDiv.style.display = 'block';
+            messageDiv.textContent = 'Please fill in all fields.';
+            return;
+          }
+
+          if (!email.includes('@') || !email.includes('.')) {
+            messageDiv.className = 'form-message error';
+            messageDiv.style.display = 'block';
+            messageDiv.textContent = 'Please enter a valid email address.';
+            return;
+          }
+
+          messageDiv.className = 'form-message success';
+          messageDiv.style.display = 'block';
+          messageDiv.innerHTML = `Thank you, <strong>${name}</strong>! Your request for a <strong>${product}</strong> has been received. We'll email you at ${email} within 24 hours.`;
+
+          form.reset();
+        });
+      }
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
